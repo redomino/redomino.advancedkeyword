@@ -20,6 +20,7 @@ from zope.interface import implements
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
+from plone.memoize.instance import memoize
 
 from zope import schema
 from zope.formlib import form
@@ -88,13 +89,17 @@ class Renderer(base.Renderer):
 
     @property
     def available(self):
-        return True
+        return bool(self._data())
 
     render = ViewPageTemplateFile('keywordportlet.pt')
 
-    def getChildrenTags(self, tag = ''):
-        if not tag:
-            tag = self.data.selectedtag
+    def getChildrenTags(self):
+        results = self._data()
+        return results
+
+    @memoize
+    def _data(self):
+        tag = self.data.selectedtag
         vocab_factory = getUtility(IVocabularyFactory, "plone.app.vocabularies.Keywords")
         vocab = vocab_factory(self.context)
         tag_level = len(tag.split('.'))+1

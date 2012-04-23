@@ -35,6 +35,9 @@ Changelog
 - Added and enabled locales/en directory
   [davidemoro]
 
+- Fixed tests and keyword portlet implementation.
+  [davidemoro]
+
 0.7 (2012-01-12)
 ----------------
 

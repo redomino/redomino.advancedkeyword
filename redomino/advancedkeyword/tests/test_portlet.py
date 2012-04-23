@@ -93,7 +93,7 @@ class TestPortlet(TestCase):
         renderer = getMultiAdapter(
             (context, request, view, manager, assignment), IPortletRenderer)
         self.assertTrue(isinstance(renderer, keywordportlet.Renderer))
-        childrenTags = [item[0] for item in renderer.getChildrenTags('1')]
+        childrenTags = [item[0] for item in renderer.getChildrenTags()]
 
         self.assertTrue('1.11' in childrenTags)
         self.assertTrue('1.12' in childrenTags)

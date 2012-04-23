@@ -22,7 +22,7 @@
 
     <dd class="portletItem odd">
             <ul>
-                <li tal:repeat="child python:view.getChildrenTags(tag)">
+                <li tal:repeat="child python:view.getChildrenTags()">
                     <a href="#"
                         tal:define="tag_key python:child[0];
 			            tag_label python:child[1];"
