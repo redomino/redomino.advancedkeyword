@@ -97,7 +97,8 @@ class Renderer(base.Renderer):
             tag = self.data.selectedtag
         vocab_factory = getUtility(IVocabularyFactory, "plone.app.vocabularies.Keywords")
         vocab = vocab_factory(self.context)
-        results = [(term.value, term.value.split('.')[-1]) for term in vocab if term.value.startswith(tag) and len(term.value.split('.')) == len(tag.split('.'))+1]
+        tag_level = len(tag.split('.'))+1
+        results = [(term.value, term.value.split('.')[-1]) for term in vocab if term.value.startswith(tag) and len(term.value.split('.')) == tag_level]
         return results
 
 class AddForm(base.AddForm):
