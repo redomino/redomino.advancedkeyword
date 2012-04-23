@@ -39,8 +39,8 @@ class TestPortlet(TestCase):
         self.portal.invokeFactory('Document', 'doc-tag2')
         doc1 = self.portal['doc-tag1']
         doc2 = self.portal['doc-tag2']
-        doc1.setSubject(['supertag.subtag1','supertag1.subtag2'])
-        doc2.setSubject(['supertag1.subtag3','supertag.subtag4'])
+        doc1.setSubject(['1.11','1.12', '1.12.121'])
+        doc2.setSubject(['2.21','1.11'])
         doc1.reindexObject()
         doc2.reindexObject()
 
@@ -52,7 +52,7 @@ class TestPortlet(TestCase):
                           'redomino.advancedkeyword.KeywordPortlet')
 
     def test_interfaces(self):
-        portlet = keywordportlet.Assignment('myportlet', 'supertag')
+        portlet = keywordportlet.Assignment('myportlet', '1')
         self.assertTrue(IPortletAssignment.providedBy(portlet))
         self.assertTrue(IPortletDataProvider.providedBy(portlet.data))
         
@@ -88,16 +88,18 @@ class TestPortlet(TestCase):
         manager = getUtility(IPortletManager, name='plone.rightcolumn',
                              context=self.portal)
 
-        assignment = keywordportlet.Assignment('myportlet','supertag')
+        assignment = keywordportlet.Assignment('myportlet','1')
 
         renderer = getMultiAdapter(
             (context, request, view, manager, assignment), IPortletRenderer)
         self.assertTrue(isinstance(renderer, keywordportlet.Renderer))
-        childrenTags = [item[1] for item in renderer.getChildrenTags('supertag')]
+        childrenTags = [item[0] for item in renderer.getChildrenTags('1')]
 
-        self.assertTrue('subtag1' in childrenTags)
-        self.assertTrue('subtag4' in childrenTags)
-        self.assertFalse('subtag2' in childrenTags)
+        import pdb; pdb.set_trace()
+        self.assertTrue('1.11' in childrenTags)
+        self.assertTrue('1.12' in childrenTags)
+        self.assertFalse('1.12.121' in childrenTags)
+        self.assertFalse('2.21' in childrenTags)
 
 class TestRenderer(TestCase):
 
@@ -107,8 +109,8 @@ class TestRenderer(TestCase):
         self.portal.invokeFactory('Document', 'doc-tag2')
         doc1 = self.portal['doc-tag1']
         doc2 = self.portal['doc-tag2']
-        doc1.setSubject(['supertag.subtag1','supertag1.subtag2','supertag.subtag1.subsubtag'])
-        doc2.setSubject(['supertag1.subtag3','supertag.subtag4'])
+        doc1.setSubject(['1.11','1.12','1.11.111', '1.11.112'])
+        doc2.setSubject(['2.21','2.22'])
         doc1.reindexObject()
         doc2.reindexObject()
 
@@ -126,16 +128,17 @@ class TestRenderer(TestCase):
 
     def test_render(self):
         r = self.renderer(context=self.portal,
-                          assignment=keywordportlet.Assignment('myportlet', 'supertag'))
+                          assignment=keywordportlet.Assignment('myportlet', '1'))
         r = r.__of__(self.folder)
         r.update()
         output = r.render()
-	self.assertTrue('Subject=supertag' in output)
-	self.assertTrue('Subject=supertag.subtag1' in output)
-	self.assertTrue('Subject=supertag.subtag4' in output)
-	self.assertFalse('Subject=supertag1.subtag2' in output)
-	self.assertFalse('Subject=supertag1.subtag3' in output)
-	self.assertFalse('Subject=supertag.subtag1.subsubtag' in output)
+    	self.assertTrue('Subject=1' in output)
+    	self.assertTrue('Subject=1.11' in output)
+    	self.assertTrue('Subject=1.12' in output)
+    	self.assertFalse('Subject=2.21' in output)
+    	self.assertFalse('Subject=2.22' in output)
+    	self.assertFalse('Subject=1.11.111' in output)
+    	self.assertFalse('Subject=1.11.112' in output)
 
 
 def test_suite():

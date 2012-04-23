@@ -91,12 +91,13 @@ class Renderer(base.Renderer):
         return True
 
     render = ViewPageTemplateFile('keywordportlet.pt')
+
     def getChildrenTags(self, tag = ''):
         if not tag:
             tag = self.data.selectedtag
         vocab_factory = getUtility(IVocabularyFactory, "plone.app.vocabularies.Keywords")
         vocab = vocab_factory(self.context)
-        results = [(term.value, term.value.split('.')[-1]) for term in vocab if term.value.startswith(tag)]
+        results = [(term.value, term.value.split('.')[-1]) for term in vocab if term.value.startswith(tag) and len(term.value.split('.')) == len(tag.split('.'))+1]
         return results
 
 class AddForm(base.AddForm):
