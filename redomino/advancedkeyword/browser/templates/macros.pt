@@ -1,0 +1,25 @@
+<metal:define-macro define-macro="keywordsmapmacro">
+    <ul tal:define="tree tree | nothing">
+        <li tal:repeat="branch tree">
+            <a tal:attributes="href string:${context/absolute_url}/search?Subject%3Alist=${branch/full_keyword}" tal:content="branch/keyword"></a>
+            <tal:define define="tree branch/children" condition="tree">
+                <metal:use-macro use-macro="context/@@keywordsmacros/keywordsmapmacro"/>
+            </tal:define>
+        </li>
+    </ul>
+</metal:define-macro>
+
+
+<metal:define-macro define-macro="keywordswidgetmacro">
+    <ul tal:define="tree tree | nothing">
+        <li tal:repeat="branch tree">
+            <input type="checkbox" tal:attributes="value branch/full_keyword;
+                                                   id branch/id;
+                                                   checked python:branch['selected'] and 'checked' or ''">
+            <label tal:attributes="for branch/id" tal:content="branch/keyword">tagname</label>
+            <tal:define define="tree branch/children" condition="tree">
+                <metal:use-macro use-macro="context/@@keywordsmacros/keywordswidgetmacro"/>
+            </tal:define>
+        </li>
+    </ul>
+</metal:define-macro>

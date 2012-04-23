@@ -1,0 +1,14 @@
+TODO
+====
+
+Todo list:
+
+* improve readme and include into the sphynx doc newer screenshots
+
+* implement the available method of keyword portlet (if there are no keywords the portlet should be not rendered)
+
+* bug: if you choose in the keyword portlet a second level root no leaf are shown
+
+Future:
+
+* improve the usability of keyword tree widget (it should be possible to add new keyword through a + action)

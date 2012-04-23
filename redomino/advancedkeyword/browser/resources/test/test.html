@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>QUnit Test Suite</title>
+ <link rel="stylesheet" href="qunit.css" type="text/css" media="screen">
+ <script type="text/javascript" src="qunit.js"></script>
+<!-- <script type="text/javascript" src="mock.js"></script>  optional: only for ajax testing -->
+
+ <!-- support -->
+ <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+ <!-- Your project file goes here -->
+ <link rel="stylesheet" href="../jquery.keywordtree.css" type="text/css" media="screen">
+ <script type="text/javascript" src="../jquery.keywordtree.js"></script>
+ <!-- Your tests file goes here -->
+ <script type="text/javascript" src="test.js"></script>
+</head>
+<body>
+ <h1 id="qunit-header">QUnit Test Suite</h1>
+ <h2 id="qunit-banner"></h2>
+ <div id="qunit-testrunner-toolbar"></div>
+ <h2 id="qunit-userAgent"></h2>
+ <ol id="qunit-tests"></ol>
+
+    <div>
+    <!-- Your can place here some markup to be tested -->
+                                
+    <ul class="tree">
+        <li>
+            <input type="checkbox" id="A" value="A">
+            <label for="gastronomia">A</label>
+            <ul>
+                <li>
+                    <input type="checkbox" id="A-A" value="A.A">
+                    <label for="A-A">A</label>
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="A-A-A" value="A.A.A">
+                            <label for="A-A-A">A</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="A-A-B" value="A.A.B">
+                            <label for="A-A-B">B</label>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input type="checkbox" id="A-B" value="A.B">
+                    <label for="A-B">B</label>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <input type="checkbox" id="B" value="B">
+            <label for="B">B</label>
+            <ul>
+                <li>
+                    <input type="checkbox" id="B-A" value="B.A">
+                    <label for="B.A">A</label>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <select class="select" multiple="multiple"/>
+<div id="container" />
+    </div>
+</body>
+</html>
+
+

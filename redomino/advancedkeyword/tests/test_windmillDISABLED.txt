@@ -1,0 +1,78 @@
+# Copyright (c) 2011 Redomino srl (http://redomino.com)
+# Authors: Davide Moro <davide.moro@redomino.com> and contributors
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2 as published
+# by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+# 02111-1307, USA.
+
+import unittest
+from Products.PloneTestCase import PloneTestCase as ptc
+
+from niteoweb.windmill import WindmillTestCase
+from Testing import ZopeTestCase as ztc
+
+from Products.PloneTestCase.layer import onsetup
+from Products.Five.zcml import load_config
+
+
+@onsetup
+def load_zcml():
+
+    import redomino.advancedkeyword
+    load_config('configure.zcml', redomino.advancedkeyword)
+
+    ztc.installPackage('redomino.languagesetup')
+
+load_zcml()
+ptc.setupPloneSite(products=['redomino.advancedkeyword'], extension_profiles=['redomino.advancedkeyword:default'])
+
+class TestWMIntegration(WindmillTestCase):
+
+
+    def afterSetUp(self):
+        ztc.utils.setupCoreSessions(self.app)
+        self.setRoles(['Manager'])
+#        self.portal.it.invokeFactory('Document', 'welcome')
+#        self.welcome_it = self.portal.it.welcome
+#        self.welcome_it.addTranslation('en')
+#        self.welcome_en = self.welcome_it.getTranslation('en')
+#
+        self.login_user()
+
+
+    def test_integration_linguaplone(self):
+        client = self.wm
+
+        client.open_site(url="/front-page/edit")
+        client.waits.forPageLoad(timeout=u'20000')
+        client.waits.forElement(xpath=u"//a[@id='fieldsetlegend-categorization']/span", timeout=u'8000')
+        client.click(xpath=u"//a[@id='fieldsetlegend-categorization']/span")
+        client.click(id=u'subject_keywords')
+        client.type(text=u'redomino.pippo.pluto redomino.pippo.paperino redomino.topolino', id=u'subject_keywords')
+        client.click(name=u'form.button.save')
+        client.waits.forPageLoad(timeout=u'20000')
+        client.waits.forElement(link=u'Edit', timeout=u'8000')
+        client.click(link=u'Edit')
+        client.waits.forPageLoad(timeout=u'20000')
+        client.waits.forElement(xpath=u"//a[@id='fieldsetlegend-categorization']/span", timeout=u'8000')
+        client.click(xpath=u"//a[@id='fieldsetlegend-categorization']/span")
+        client.click(xpath=u"//div[@id='subject-tree']/ul/li/ul/li[1]/ul/li[2]/span/span[2]")
+        client.click(xpath=u"//div[@id='subject-tree']/ul/li/ul/li[2]/span/span[2]")
+        client.click(name=u'form.button.save')
+        client.waits.forPageLoad(timeout=u'20000')
+
+
+
+def test_suite():
+    return unittest.defaultTestLoader.loadTestsFromName(__name__)
+

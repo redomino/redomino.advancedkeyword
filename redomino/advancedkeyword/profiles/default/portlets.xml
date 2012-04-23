@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<portlets>
+
+ <!-- Portlet type registrations -->
+
+ <portlet
+   addview="redomino.advancedkeyword.KeywordPortlet"
+   title="Keyword portlet"
+   description=""
+   />
+
+</portlets>

@@ -1,0 +1,16 @@
+<metal:use-macro use-macro="context/main_template/macros/master" i18n:domain="redomino.advancedkeyword">
+
+<metal:fill-slot fill-slot="content">
+
+<h1 class="documentFirstHeading" i18n:translate="title_keywordsmap">Keywords map</h1>
+<div class="documentDescription" i18n:translate="descr_keywordsmap">An overview of the available arguments on this site.</div>
+
+<div id="content">
+
+    <div id="keywordstree" tal:define="tree view/getTree">
+        <metal:use-macro use-macro="context/@@keywordsmacros/keywordsmapmacro"/>
+    </div>
+</div>
+</metal:fill-slot>
+
+</metal:use-macro>

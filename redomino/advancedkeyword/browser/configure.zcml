@@ -1,0 +1,90 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="redomino.advancedkeyword">
+
+
+  <!-- Jbot section -->
+  <include package="z3c.jbot" file="meta.zcml" />
+
+  <browser:jbot
+      directory="jbot"
+      layer=".interfaces.IRedominoAdvancedKeywordLayer" />
+
+  <!-- Javascripts and resources -->
+  <browser:resourceDirectory
+      name="redomino.advancedkeyword.resources"
+      directory="resources"
+      layer=".interfaces.IRedominoAdvancedKeywordLayer"
+      />
+
+  <!-- Viewlets -->
+  <browser:viewlet
+      name="plone.belowcontenttitle.keywords"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+      view="plone.app.layout.globals.interfaces.IViewView"
+      class=".viewlets.KeywordsViewlet"
+      permission="zope2.View"
+      layer=".interfaces.IRedominoAdvancedKeywordLayer"
+      />
+
+  <!-- Views (keyword tree generator) -->
+
+  <browser:view
+      for="*"
+      name="keywordsmapgenerator"
+      class=".keywords.KeywordsMapGenerator"
+      permission="zope2.View"
+      />
+
+  <browser:view
+      for="*"
+      name="keywordswidgetgenerator"
+      class=".keywords.KeywordsWidgetGenerator"
+      permission="zope2.View"
+      />
+
+  <!-- Views macros -->
+  
+  <browser:page
+      for="*"
+      name="keywordsmacros"
+      template="templates/macros.pt"
+      permission="zope.Public"
+      />
+
+  <!-- Views -->
+  
+  <browser:view
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      name="keywordsmap"
+      class=".keywords.KeywordsMap"
+      permission="zope2.View"
+      />
+
+  <browser:view
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      name="advancedkeyword-controlpanel"
+      class=".keywordmapcontrolpanel.KeywordMapControlPanel"
+      permission="zope2.View"
+      />
+
+  <browser:view
+      for="*"
+      name="keywordmapenabled"
+      class=".utils.KeywordMapEnabled"
+      permission="zope2.View"
+      />
+
+  <!-- Adapters -->
+  <adapter factory=".keywordmapcontrolpanel.KeywordMapControlPanelAdapter" />
+
+  <browser:page
+      for="*"
+      name="advancedkeywords.options.js"
+      template="templates/advancedkeywords.options.js.pt"
+      permission="zope.Public"
+      />
+
+</configure>

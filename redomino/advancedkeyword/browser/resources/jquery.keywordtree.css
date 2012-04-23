@@ -1,0 +1,32 @@
+.collapsedtree .placeholder {
+    display:block;
+    clear:left;
+    float:left;
+    height:16px;
+    width:16px;
+}
+
+.collapsedtree .handler {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image:url(collapsed.png);
+}
+.collapsedtree .handler.opened{
+    background-image:url(expanded.png);
+}
+
+.collapsedtree, .collapsedtree ul{
+    list-style:none !important;
+}
+
+.collapsedtree{
+    padding-left:0 !important;
+    margin-left:0 !important;
+}
+.found{
+    background-color:yellow;
+}
+#subject{
+    display:none;
+}
+

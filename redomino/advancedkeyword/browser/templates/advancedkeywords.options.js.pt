@@ -1,0 +1,4 @@
+<tal:options i18n:domain="redomino.advancedkeyword">
+window.REDOMINO_ADVANCED_KEYWORD = {};
+REDOMINO_ADVANCED_KEYWORD.filter_label = "<tal:js i18n:translate="filter_keyword">Search among existing subjects:</tal:js>";
+</tal:options>

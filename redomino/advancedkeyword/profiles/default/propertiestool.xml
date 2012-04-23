@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="advancedkeyword_properties" meta_type="Plone Property Sheet">
+   <property name="keywordmapenabled" type="boolean">true</property>
+ </object>
+</object>

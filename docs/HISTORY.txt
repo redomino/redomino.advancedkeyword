@@ -1,0 +1,108 @@
+Changelog
+=========
+
+0.8 (unreleased)
+----------------
+
+- Added javascript unit tests with qunit
+  [sithmel
+
+- Fixed locales :It depended from plone 4.1 locale. Now Is stands alone
+  [sithmel]
+
+- Removed Dynatree, JSON interface towards the widget, inline javascript.
+  Added a new keywordtree widget (easier to test with qunit)
+  [sithmel]
+
+- Added (and tested) a keyword tree generator baseclass (browserview)
+  [sithmel]
+
+- New keyword map based on keyword tree generator
+  [sithmel]
+  
+- New keyword widget based on keyword tree generator
+  [sithmel]
+
+- New keyword widget javascript (with search)
+  [sithmel]
+
+- Added .gitignore file
+  [davidemoro]
+
+- Keywords portlet: title required now
+  [davidemoro]
+
+- Added and enabled locales/en directory
+  [davidemoro]
+
+0.7 (2012-01-12)
+----------------
+
+- Added a keywordportlet thats shows a list of first children of a selected tag
+  [giacomos]
+
+- Administrators users can choose to enable or disable the @@keywordsmap action through
+  a keywords map control panel.
+  If disabled, a NotFound will be raised trying to visit the @@keywordsmap view.
+  [davidemoro, giacomos]
+
+- More tests added
+  [davidemoro, giacomos]
+
+- Moved manual i18n strings to a separate pot
+  [giacomos]
+
+
+0.6 (2011-10-03)
+----------------
+
+- Added a keyword map of the site. You can see the whole hierarchical arguments map visiting @@keywordsmap.
+  Each node of the hierarchical map is clickable. The target link leads you to the 
+  portal_url/search?Subject:list=CLICKEDKEYWORD search results page.
+  [davidemoro]
+
+- Added a new action name "Keywords map" that links the @@keywordsmap view
+  [davidemoro]
+
+- Added Sphinx documentation
+  [davidemoro]
+
+
+0.5 (2011-09-20)
+----------------
+
+- Added plone.indexer as explicit requirement.
+  Older versions of Plone (3.x) are not shipped with plone.indexer by default.
+  [davidemoro]
+
+
+0.4 (2011-09-19)
+----------------
+
+- fix for IE < 9 (wrap the javascript code inside an anonymous function)
+  [sithmel]
+
+
+0.3 (2011-09-15)
+----------------
+
+- Changed javascript registration options in portal_javascript
+  [davidemoro]
+
+
+0.2 (2011-09-14)
+----------------
+
+- Removed minExpandLevel option on dynatree. Too large if the keyword tree has to many subkeywords
+  [davidemoro]
+
+
+0.1 (2011-09-08)
+----------------
+
+- Added javascript tree support based on the dynatree plugin version 1.2.0_rc1
+  See http://code.google.com/p/dynatree for further information. 
+  [davidemoro] 
+
+- Initial release
+  [davidemoro]

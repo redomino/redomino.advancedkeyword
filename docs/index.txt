@@ -1,0 +1,11 @@
+.. include:: ../README.txt
+
+Index
+-----
+.. toctree::
+   :maxdepth: 2
+
+   HISTORY
+   LICENSE
+
+.. include :: ../README.txt

@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="redomino.advancedkeyword"
+      tal:omit-tag="">
+
+<dl class="portlet portletExamplePortlet"
+    i18n:domain="test.portlet.example"
+    tal:define="tag view/data/selectedtag">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+            <a href="#"
+                tal:attributes="href string:${context/portal_url}/search?Subject=${tag}"
+                tal:content="view/title">
+                Portelt title
+            </a>
+            
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem odd">
+            <ul>
+                <li tal:repeat="child python:view.getChildrenTags(tag)">
+                    <a href="#"
+                        tal:define="tag_key python:child[0];
+			            tag_label python:child[1];"
+                        tal:attributes="href string:${context/portal_url}/search?Subject=${tag_key}"
+                        tal:content="tag_label">child</a>
+                </li>
+            </ul>
+    </dd>
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>
+</html>
