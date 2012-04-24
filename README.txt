@@ -95,6 +95,8 @@ The customized keywords viewlet will prompt the following links:
 
 This works because we provide a customized catalog indexer for keywords.
 
+In next releases will be provided a mechanism for changing the shown keywords (useful for example if you don't like to show "technology.combinened systems").
+
 How to use advancedkeyword on an existing site
 ----------------------------------------------
 
