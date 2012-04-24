@@ -1,4 +1,3 @@
-
 Index
 -----
 .. toctree::
@@ -7,56 +6,59 @@ Index
 redomino.advancedkeyword
 ========================
 
-The ``redomino.advancedkeyword`` plugin aims to improve the keyword mechanism provided by Plone introducing *hierarchy* among keywords. 
-All the customizations introduced by redomino.advancedkeyword are made with backward compatibility in mind. 
+redomino.advancedkeyword
+========================
+
+The ``redomino.advancedkeyword`` plugin aims to improve the keyword mechanism provided by Plone introducing *hierarchy* among keywords.
+All the customizations introduced by redomino.advancedkeyword are made with backward compatibility in mind.
 You can also use this plugin without pain when you need to migrate your contents: redomino.advancedkeyword still uses the standard ``subject`` field and the main work was made at frontend level
 using javascript.
 
-Note: You can use redomino.advancedkeyword also without having javascript enabled.
+Note: having your javascript enabled is not required to use redomino.advancedkeyword.
 
 What are the main problems of the old keyword management?
 ---------------------------------------------------------
 
 Here is a list of problems:
 
-* all the keywords are listed as a long long plain list
+* all the keywords are listed as a long, long plain list
 * keywords are not semantically grouped
 
 Here you can see the standard keyword widget how it is prompted to :
 
-.. figure::  resources/keywordold.png
-   :align:   center
+.. figure:: resources/keywordold.png
+   :align: center
 
    Old keywords widgets.
 
 As you can imagine the above edit widget is hard to use and difficult to manage.
 
-How can advancedkeyword help you
+How can AdvancedKeyword help you
 --------------------------------
 
 And now the advanced keyword widget with hierarchical management:
 
-.. figure::  resources/keywordtree.png
-   :align:   center
+.. figure:: resources/keywordtree.png
+   :align: center
 
    Keywords widget powered by redomino.advancedkeyword
 
-The above image let the keyword editor to collapse/expand semantic groups of keywords and it is more indicated to manage large
+The above image lets the keyword editor collapse/expand semantic groups of keywords, which makes it more suitable to manage large
 sets of keywords as you can find in a large intranet.
 
 You can also search for existing keywords through the existing tags.
 
 
-How it works?
-=============
+How does it work?
+=================
 
 Hierarchy is introduced using the ``.`` (dot) character: it will be used as a keyword separator.
-Why we are using the dot character and not another one? Because it is little used in keywords and it is easy to type.
+Why are we using the dot character and not another one? Because it is little used in keywords and it is easy to type.
 
 Edit view
 ---------
 
-If you use correctly the . separator you will be able to construct a keyword tree similar to the following one:
+If you use correctly the . separator, you will be able to create a keyword tree similar to the following one:
 
 ::
 
@@ -69,10 +71,10 @@ If you use correctly the . separator you will be able to construct a keyword tre
     ...
 
 Clicking on the collapse or expand controls you can open or close keyword nodes.
-If you click on a keyword that is a leaf, all its parents will be selected automatically; if you unselect a node, all the sub keywords selected are automatically unselected.
-So the keyword editor will be able to select leafs or internal nodes.
+If you click on a keyword that is a leaf, all its parents will be selected automatically; if you unselect a node, all the sub-keywords selected are automatically deselected.
+So by the keyword editor you will be able to select single leafs or internal nodes.
 
-You can add new keywords using the standard Plone control: nothing has changed. If you want to add one or more keywords type something of similar:
+You can add new keywords using the standard Plone control: nothing has changed. If you want to add one or more keywords then type something similar to the following example:
 
 * what.furniture.outdoor
 * etc
@@ -85,7 +87,7 @@ If you choose the following keywords on a particular object:
 * what.doors.flat
 * technology.combined systems
 
-The customized keywords viewlet will prompt the following links:
+the customized keywords viewlet will prompt the following links:
 
 * what (clicking on this item you will be able to see all the products)
 * what.doors (clicking on this item you will be able to see all the door related products)
@@ -95,12 +97,12 @@ The customized keywords viewlet will prompt the following links:
 
 This works because we provide a customized catalog indexer for keywords.
 
-In next releases will be provided a mechanism for changing the shown keywords (useful for example if you don't like to show "technology.combinened systems").
+In the next release a new mechanism will be provided for changing the displayed keywords. For instance, if you don't like how "technology.combinened systems" looks like, you'll be able to edit it.
 
-How to use advancedkeyword on an existing site
+How to use AdvancedKeyword on an existing site
 ----------------------------------------------
 
-At first you will see the javascript plugin with a plain keywords list, you should add the hierarchy level grouping them with dots characters: the Plone plugin named KeywordManager is you friend!
+At first you will see the javascript plugin with a plain keywords list, you should add the hierarchy level grouping keywords separated by dots characters: the Plone plugin named KeywordManager is your friend!
 
 Other features
 ==============
@@ -108,7 +110,7 @@ Other features
 Keyword map
 -----------
 
-You can see the keywords map in order to see the site arguments structure.
+Thanks to the keywords map you 're able to see the website's arguments structure.
 
 How to see the arguments map of the site:
 
@@ -117,7 +119,7 @@ How to see the arguments map of the site:
 Keywords portlet
 ----------------
 
-This product adds a new portlet: Keyword Portlet. In order to assign a new
+This product also adds a new portlet: Keyword Portlet. In order to assign a new
 instance of this portlet you will have to choose a "supertag" (or a namespace
 tag). This supertag will be used to browse a list of all tags that are "first
 child" of this tag. For ex. if your portal has these two contents::
@@ -132,13 +134,13 @@ and if you choose 'supertag1' as parent tag, the results list will show this:
 * subtag2
 * subtag4
 
-These are link to the search page with a search parameter set to
+These are links to the search page with a search parameter set to
 'supertag.subtagX'.
 
 Here you can see the keyword portlet:
 
-.. figure::  resources/keywordportlet.png
-   :align:   center
+.. figure:: resources/keywordportlet.png
+   :align: center
 
    Keywords portlet powered by redomino.advancedkeyword (it shows a subset of existing keywords)
 
