@@ -3,7 +3,7 @@ TODO
 
 Todo list:
 
-* improve readme and include into the sphynx doc newer screenshots
+* keyword portlet bug, error when you try to add a keyword portlet when there is a non unicode char
 
 Future:
 
