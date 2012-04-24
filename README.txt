@@ -27,7 +27,7 @@ Here you can see the standard keyword widget how it is prompted to :
 .. figure::  resources/keywordold.png
    :align:   center
 
-   Old keywords widgets (Plone version < 4.1).
+   Old keywords widgets.
 
 As you can imagine the above edit widget is hard to use and difficult to manage.
 
@@ -44,6 +44,8 @@ And now the advanced keyword widget with hierarchical management:
 The above image let the keyword editor to collapse/expand semantic groups of keywords and it is more indicated to manage large
 sets of keywords as you can find in a large intranet.
 
+You can also search for existing keywords through the existing tags.
+
 
 How it works?
 =============
@@ -58,15 +60,12 @@ If you use correctly the . separator you will be able to construct a keyword tre
 
 ::
 
-    [+] redomino [v]
-        [+] redomino.prodotti [v]
-            [+] redomino.prodotti.intranet
-            [+] redomino.prodotti.hosting
-            [+] redomino.prodotti.recatalog [v]
-                [-] redomino.prodotti.recatalog.video
-                [-] redomino.prodotti.recatalog.scheda
-        [+] redomino.sistemistica
-    [-] amministrazione [v]
+    [+] what [v]
+        [+] what.doors [v]
+            [+] what.doors.flat
+            [+] what.doors.profiled
+        [+] what.furniture
+    [-] technology [v]
     ...
 
 Clicking on the collapse or expand controls you can open or close keyword nodes.
@@ -75,7 +74,7 @@ So the keyword editor will be able to select leafs or internal nodes.
 
 You can add new keywords using the standard Plone control: nothing has changed. If you want to add one or more keywords type something of similar:
 
-* amministrazione.ferie
+* what.furniture.outdoor
 * etc
 
 How keywords are shown on tagged contents
@@ -83,15 +82,16 @@ How keywords are shown on tagged contents
 
 If you choose the following keywords on a particular object:
 
-* redomino.prodotti.recatalog
-* redomino.2011
+* what.doors.flat
+* technology.combined systems
 
 The customized keywords viewlet will prompt the following links:
 
-* redomino (clicking on this item you will be able to see all the redomino items)
-* redomino.prodotti (clicking on this item you will be able to see all the redomino related products)
-* redomino.prodotti.recatalog (clicking on this item you will be able all the redomino product named recatalog)
-* redomino.2011 (etc...)
+* what (clicking on this item you will be able to see all the products)
+* what.doors (clicking on this item you will be able to see all the door related products)
+* what.doors.flat (clicking on this item you will be able all the flat doors related products)
+* technology
+* technology.combined systems
 
 This works because we provide a customized catalog indexer for keywords.
 
@@ -133,6 +133,13 @@ and if you choose 'supertag1' as parent tag, the results list will show this:
 These are link to the search page with a search parameter set to
 'supertag.subtagX'.
 
+Here you can see the keyword portlet:
+
+.. figure::  resources/keywordportlet.png
+   :align:   center
+
+   Keywords portlet powered by redomino.advancedkeyword (it shows a subset of existing keywords)
+
 
 How to launch tests
 ===================
@@ -145,6 +152,6 @@ $ ./bin/test -m redomino.advancedkeyword
 Authors
 =======
 
-* Davide Moro <davide.moro@redomino.com> (idea, concept, design and implementation)
+* Davide Moro (davidemoro) <davide.moro@redomino.com> (idea, concept, design and implementation)
 * Giacomo Spettoli <giacomo.spettoli@redomino.com>
 * Maurizio Lupo (sithmel) <maurizio.lupo@redomino.com>
