@@ -3,7 +3,7 @@ import os
 
 version = '0.8dev'
 
-tests_require = ['niteoweb.windmill']
+tests_require = []
 
 setup(name='redomino.advancedkeyword',
       version=version,
@@ -17,9 +17,9 @@ setup(name='redomino.advancedkeyword',
         "Programming Language :: Python",
         ],
       keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      author='Davide Moro',
+      author_email='davide.moro@redomino.com',
+      url='https://github.com/redomino/redomino.advancedkeyword',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['redomino'],
