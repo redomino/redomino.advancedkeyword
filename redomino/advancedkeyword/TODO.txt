@@ -1,10 +1,6 @@
 TODO
 ====
 
-Todo list:
-
-* keyword portlet bug, error when you try to add a keyword portlet when there is a non unicode char
-
 Future:
 
 * improve the usability of keyword tree widget (it should be possible to add new keyword through a + action)

@@ -13,8 +13,8 @@
          view_permission="zope2.View"
          edit_permission="cmf.ManagePortal"
          renderer=".keywordportlet.Renderer"
-         addview=".keywordportlet.AddForm"
-         editview=".keywordportlet.EditForm"
+         addview=".keywordportlet.AddFormView"
+         editview=".keywordportlet.EditFormView"
          />
 
 </configure>

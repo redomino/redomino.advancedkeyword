@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-04-20 15:47+0000\n"
+"POT-Creation-Date: 2012-04-26 14:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: Davide Moro <davide.moro@redomino.com>\n"
 "Language-Team: Redomino <info@redomino.com>\n"
@@ -39,10 +39,19 @@ msgid "help_keywordmapsettings"
 msgstr "Impostazioni generali"
 
 #. Default: "The title of the keyword portlet. If empty, it will be used 'Search by {tag}'"
-#: ./portlets/keywordportlet.py:41
-#, fuzzy
+#: ./portlets/keywordportlet.py:61
 msgid "help_keywordportlet_title"
 msgstr "Il titolo della portlet delle categorie."
+
+#. Default: "Add keyword portlet"
+#: ./portlets/keywordportlet.py:138
+msgid "label_add_keywordportlet"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./portlets/keywordportlet.py:170
+msgid "label_cancel"
+msgstr "Annulla"
 
 #. Default: "Create and apply new tags."
 #: ./browser/jbot/Products.Archetypes.skins.archetypes.widgets.keyword.pt:133
@@ -70,24 +79,44 @@ msgid "label_keywordmapsettings"
 msgstr "Impostazioni mappa degli argomenti"
 
 #. Default: "Search for ${tag}"
-#: ./portlets/keywordportlet.py:75
+#: ./portlets/keywordportlet.py:95
 msgid "label_keywordportlet_deftitle"
 msgstr "Cerca per ${tag}"
 
 #. Default: "Title"
-#: ./portlets/keywordportlet.py:40
+#: ./portlets/keywordportlet.py:60
 msgid "label_keywordportlet_title"
 msgstr "Titolo"
+
+#. Default: "Modify keyword portlet"
+#: ./portlets/keywordportlet.py:190
+msgid "label_modify_keyword_portlet"
+msgstr "Modifica keyword portlet"
 
 #. Default: "Enter one tag per line, multiple words allowed. You can create nested tag separating each tag by a dot."
 #: ./browser/jbot/Products.Archetypes.skins.archetypes.widgets.keyword.pt:136
 msgid "label_newTagsHelp"
 msgstr "Inserisci una categoria per linea, puoi inserire categorie di più parole su una linea. Puoi creare dei tag ad albero separando ogni tag con un punto."
 
+#. Default: "Save"
+#: ./portlets/keywordportlet.py:159
+msgid "label_save"
+msgstr "Salva"
+
 #. Default: "Tags"
-#: ./portlets/keywordportlet.py:46
+#: ./portlets/keywordportlet.py:66
 msgid "label_tags"
 msgstr "Categorie"
+
+#. Default: "Changes saved"
+#: ./portlets/keywordportlet.py:211
+msgid "status_changes_saved"
+msgstr "Modifiche effettuate"
+
+#. Default: "No changes"
+#: ./portlets/keywordportlet.py:213
+msgid "status_no_changes"
+msgstr "Nessuna modifica è stata effettuata"
 
 #. Default: "Keywords map"
 #: ./browser/templates/keywordmap.pt:5

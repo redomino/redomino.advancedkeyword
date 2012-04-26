@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-04-20 15:47+0000\n"
+"POT-Creation-Date: 2012-04-26 14:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,8 +42,18 @@ msgid "help_keywordmapsettings"
 msgstr ""
 
 #. Default: "The title of the keyword portlet. If empty, it will be used 'Search by {tag}'"
-#: ./portlets/keywordportlet.py:41
+#: ./portlets/keywordportlet.py:61
 msgid "help_keywordportlet_title"
+msgstr ""
+
+#. Default: "Add keyword portlet"
+#: ./portlets/keywordportlet.py:138
+msgid "label_add_keywordportlet"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./portlets/keywordportlet.py:170
+msgid "label_cancel"
 msgstr ""
 
 #. Default: "Create and apply new tags."
@@ -72,13 +82,18 @@ msgid "label_keywordmapsettings"
 msgstr ""
 
 #. Default: "Search for ${tag}"
-#: ./portlets/keywordportlet.py:75
+#: ./portlets/keywordportlet.py:95
 msgid "label_keywordportlet_deftitle"
 msgstr ""
 
 #. Default: "Title"
-#: ./portlets/keywordportlet.py:40
+#: ./portlets/keywordportlet.py:60
 msgid "label_keywordportlet_title"
+msgstr ""
+
+#. Default: "Modify keyword portlet"
+#: ./portlets/keywordportlet.py:190
+msgid "label_modify_keyword_portlet"
 msgstr ""
 
 #. Default: "Enter one tag per line, multiple words allowed. You can create nested tag separating each tag by a dot."
@@ -86,9 +101,24 @@ msgstr ""
 msgid "label_newTagsHelp"
 msgstr ""
 
+#. Default: "Save"
+#: ./portlets/keywordportlet.py:159
+msgid "label_save"
+msgstr ""
+
 #. Default: "Tags"
-#: ./portlets/keywordportlet.py:46
+#: ./portlets/keywordportlet.py:66
 msgid "label_tags"
+msgstr ""
+
+#. Default: "Changes saved"
+#: ./portlets/keywordportlet.py:211
+msgid "status_changes_saved"
+msgstr ""
+
+#. Default: "No changes"
+#: ./portlets/keywordportlet.py:213
+msgid "status_no_changes"
 msgstr ""
 
 #. Default: "Keywords map"

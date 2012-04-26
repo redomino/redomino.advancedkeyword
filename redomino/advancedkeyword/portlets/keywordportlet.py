@@ -39,6 +39,16 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from redomino.advancedkeyword import _
 
+from plone.z3cform import layout
+
+class PortletFormWrapper(layout.FormWrapper):
+    """Use this form as the plone.z3cform layout wrapper to get the control
+       portlets layout.
+    """
+
+    index = ViewPageTemplateFile('portlets_layout.pt')
+
+
 class IKeywordPortlet(IPortletDataProvider):
     """A portlet
 
@@ -165,6 +175,8 @@ class AddForm(form.AddForm):
             self.request.response.redirect(nextURL)
         return ''
 
+AddFormView = layout.wrap_form(AddForm, PortletFormWrapper)
+
 class EditForm(form.EditForm):
     """Portlet edit form.
 
@@ -213,3 +225,4 @@ class EditForm(form.EditForm):
             self.request.response.redirect(nextURL)
         return ''
 
+EditFormView = layout.wrap_form(EditForm, PortletFormWrapper)
