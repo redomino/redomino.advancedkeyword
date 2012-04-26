@@ -8,4 +8,3 @@ Index
    HISTORY
    LICENSE
 
-.. include :: ../README.txt

@@ -18,7 +18,7 @@ Here is a list of problems:
 
 Here you can see the standard keyword widget how it is prompted to :
 
-.. figure:: resources/keywordold.png
+.. figure:: https://github.com/redomino/redomino.advancedkeyword/raw/master/docs/resources/keywordold.png
    :align: center
 
    Old keywords widgets.
@@ -30,7 +30,7 @@ How can AdvancedKeyword help you
 
 And now the advanced keyword widget with hierarchical management:
 
-.. figure:: resources/keywordtree.png
+.. figure:: https://github.com/redomino/redomino.advancedkeyword/raw/master/docs/resources/keywordtree.png
    :align: center
 
    Keywords widget powered by redomino.advancedkeyword
@@ -131,7 +131,7 @@ These are links to the search page with a search parameter set to
 
 Here you can see the keyword portlet:
 
-.. figure:: resources/keywordportlet.png
+.. figure:: https://github.com/redomino/redomino.advancedkeyword/raw/master/docs/resources/keywordportlet.png
    :align: center
 
    Keywords portlet powered by redomino.advancedkeyword (it shows a subset of existing keywords)
