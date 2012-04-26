@@ -67,7 +67,7 @@ class TestPortlet(TestCase):
             del mapping[m]
         addview = mapping.restrictedTraverse('+/' + portlet.addview)
 
-        addview.createAndAdd(data={})
+        addview.form_instance.createAndAdd(data={})
 
         self.assertEquals(len(mapping), 1)
         self.assertTrue(isinstance(mapping.values()[0],
@@ -79,7 +79,7 @@ class TestPortlet(TestCase):
 
         mapping['foo'] = keywordportlet.Assignment()
         editview = getMultiAdapter((mapping['foo'], request), name='edit')
-        self.assertTrue(isinstance(editview, keywordportlet.EditForm))
+        self.assertTrue(isinstance(editview, keywordportlet.EditFormView))
 
     def test_obtain_renderer(self):
         context = self.folder
