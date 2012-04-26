@@ -20,5 +20,12 @@
   <!-- Indexers -->
   <adapter factory='.indexers.subjects' name='Subject' />
 
+  <!-- Vocabularies -->
+  <utility
+     component=".vocabularies.KeywordsVocabularyFactory"
+     name="redomino.advancedkeyword.vocabularies.Keywords"
+     />
+
+
   
 </configure>

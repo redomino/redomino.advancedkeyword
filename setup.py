@@ -32,6 +32,7 @@ setup(name='redomino.advancedkeyword',
           'plone.browserlayer',
           'plone.indexer',
           'plone.app.vocabularies',
+          'plone.app.z3cform',
       ],
       entry_points="""
       # -*- Entry points: -*-

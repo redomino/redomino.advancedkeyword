@@ -15,20 +15,29 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
+from Acquisition import aq_inner
+from Acquisition import aq_parent
 
 from zope.interface import implements
+from zope import schema
+from zope.schema.interfaces import IVocabularyFactory
+from zope.component import getUtility
+from zope.component import getMultiAdapter
+
+from z3c.form import form
+from z3c.form import field
+from z3c.form import button
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
+from plone.app.portlets.interfaces import IPortletPermissionChecker
+from plone.app.portlets.browser.interfaces import IPortletAddForm
+from plone.app.portlets.browser.interfaces import IPortletEditForm
 from plone.memoize.instance import memoize
 
-from zope import schema
-from zope.formlib import form
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from redomino.advancedkeyword import _
-from zope.component import getUtility
-from zope.schema.interfaces import IVocabularyFactory
 
 class IKeywordPortlet(IPortletDataProvider):
     """A portlet
@@ -45,7 +54,7 @@ class IKeywordPortlet(IPortletDataProvider):
             required=True)
 
     selectedtag = schema.Choice(title=_(u"label_tags", default=u"Tags"),
-                             vocabulary=u"plone.app.vocabularies.Keywords",
+                             vocabulary=u"redomino.advancedkeyword.vocabularies.Keywords",
                              required=True,
                              )
 
@@ -106,22 +115,101 @@ class Renderer(base.Renderer):
         results = [(term.value, term.value.split('.')[-1]) for term in vocab if term.value.startswith(tag) and len(term.value.split('.')) == tag_level]
         return results
 
-class AddForm(base.AddForm):
+class AddForm(form.AddForm):
     """Portlet add form.
 
     This is registered in configure.zcml. The form_fields variable tells
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
-    form_fields = form.Fields(IKeywordPortlet)
+    implements(IPortletAddForm)
+
+    fields = field.Fields(IKeywordPortlet)
+    label = _(u'label_add_keywordportlet', default=u"Add keyword portlet")
 
     def create(self, data):
         return Assignment(**data)
 
-class EditForm(base.EditForm):
+    def add(self, object):
+        ob = self.context.add(object)
+        self._finishedAdd = True
+        return ob
+
+    def __call__(self):
+        IPortletPermissionChecker(aq_parent(aq_inner(self.context)))()
+        return super(AddForm, self).__call__()
+
+    def nextURL(self):
+        addview = aq_parent(aq_inner(self.context))
+        context = aq_parent(aq_inner(addview))
+        url = str(getMultiAdapter((context, self.request),
+                                  name=u"absolute_url"))
+        return url + '/@@manage-portlets'
+
+    @button.buttonAndHandler(_(u"label_save", default=u"Save"), name='add')
+    def handleAdd(self, action):
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+        obj = self.createAndAdd(data)
+        if obj is not None:
+            # mark only as finished if we get the new object
+            self._finishedAdd = True
+
+    @button.buttonAndHandler(_(u"label_cancel", default=u"Cancel"),
+                             name='cancel_add')
+    def handleCancel(self, action):
+        nextURL = self.nextURL()
+        if nextURL:
+            self.request.response.redirect(nextURL)
+        return ''
+
+class EditForm(form.EditForm):
     """Portlet edit form.
 
     This is registered with configure.zcml. The form_fields variable tells
     zope.formlib which fields to display.
     """
-    form_fields = form.Fields(IKeywordPortlet)
+    implements(IPortletEditForm)
+
+    fields = field.Fields(IKeywordPortlet)
+
+    label = _(u'label_modify_keyword_portlet', default=u"Modify keyword portlet")
+
+    def __call__(self):
+        IPortletPermissionChecker(aq_parent(aq_inner(self.context)))()
+        return super(EditForm, self).__call__()
+
+    def nextURL(self):
+        editview = aq_parent(aq_inner(self.context))
+        context = aq_parent(aq_inner(editview))
+        url = str(getMultiAdapter((context, self.request),
+                                  name=u"absolute_url"))
+        return url + '/@@manage-portlets'
+
+    @button.buttonAndHandler(_(u"label_save", default=u"Save"), name='apply')
+    def handleSave(self, action):
+        data, errors = self.extractData()
+        if errors:
+            self.status = self.formErrorsMessage
+            return
+        changes = self.applyChanges(data)
+        if changes:
+            self.status = _(u'status_changes_saved', default="Changes saved")
+        else:
+            self.status = _(u'status_no_changes', default=u"No changes")
+
+        nextURL = self.nextURL()
+        if nextURL:
+            self.request.response.redirect(self.nextURL())
+        return ''
+
+    @button.buttonAndHandler(_(u"label_cancel", default=u"Cancel"),
+                             name='cancel_add')
+    def handleCancel(self, action):
+        nextURL = self.nextURL()
+        if nextURL:
+            self.request.response.redirect(nextURL)
+        return ''
+

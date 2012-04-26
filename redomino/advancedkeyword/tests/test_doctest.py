@@ -40,6 +40,9 @@ def test_suite():
         doctest.DocTestSuite(
             module='redomino.advancedkeyword.indexers',
             setUp=testing.setUp, tearDown=testing.tearDown),
+        doctest.DocTestSuite(
+            module='redomino.advancedkeyword.vocabularies',
+            setUp=testing.setUp, tearDown=testing.tearDown),
         ])
 
 if __name__ == '__main__':
