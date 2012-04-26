@@ -1,11 +1,3 @@
-Index
------
-.. toctree::
-   :maxdepth: 2
-
-redomino.advancedkeyword
-========================
-
 redomino.advancedkeyword
 ========================
 

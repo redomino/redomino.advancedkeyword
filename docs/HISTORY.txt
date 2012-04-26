@@ -4,7 +4,8 @@ Changelog
 0.9 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fixed readme.
+  [davidemoro]
 
 
 0.8 (2012-04-24)
