@@ -7,6 +7,12 @@ Changelog
 - Fixed readme.
   [davidemoro]
 
+- Fix portlet keyword bug (UnicodeDecodeError when there is a non ascii character)
+  [davide moro]
+
+- Converted keyword portlet from formlib to z3c.form
+  [davide moro]
+
 
 0.8 (2012-04-24)
 ----------------
