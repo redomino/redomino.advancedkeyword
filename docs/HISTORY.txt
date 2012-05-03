@@ -4,7 +4,12 @@ Changelog
 1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Closes https://github.com/redomino/redomino.advancedkeyword/issues/3.
+  The expand or collapse icon is not displayed launching the instance in
+  production mode (./bin/instance start). Thanks whitie.
+  [davidemoro]
+
+Nothing changed yet.
 
 
 1.0 (2012-05-03)

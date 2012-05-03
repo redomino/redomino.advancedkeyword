@@ -9,10 +9,10 @@
 .collapsedtree .handler {
     background-repeat: no-repeat;
     background-position: center;
-    background-image:url(collapsed.png);
+    background-image:url(++resource++redomino.advancedkeyword.resources/collapsed.png);
 }
 .collapsedtree .handler.opened{
-    background-image:url(expanded.png);
+    background-image:url(++resource++redomino.advancedkeyword.resources/expanded.png);
 }
 
 .collapsedtree, .collapsedtree ul{
