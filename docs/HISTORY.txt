@@ -4,7 +4,9 @@ Changelog
 1.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fixed issues related to  https://github.com/redomino/redomino.advancedkeyword/issues/3
+  (not solved in 1.1 version)
+  [davidemoro]
 
 
 1.1 (2012-05-04)
