@@ -64,6 +64,13 @@ class TestIndexers(TestCase):
         self.assertEqual(self.portal.portal_catalog.uniqueValuesFor('Subject'), ('redomino', 'redomino.pippo'))
 
 
+    def test_subjects6(self):
+        """ colore.rosso spento -> colore, rosso spento"""
+        front_page = self.portal['front-page']
+
+        front_page.setSubject(['colore.rosso spento'])
+        front_page.reindexObject()
+        self.assertEqual(self.portal.portal_catalog.uniqueValuesFor('Subject'), ('colore', 'colore.rosso spento'))
 
 
 def test_suite():

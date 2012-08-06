@@ -4,7 +4,8 @@ Changelog
 1.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fixed bug: "kw1.kw2" matched incorrectly with "kw1.kw2 kw3"
+  [sithmel]
 
 
 1.2 (2012-05-09)

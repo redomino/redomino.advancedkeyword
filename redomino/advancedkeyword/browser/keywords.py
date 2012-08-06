@@ -27,6 +27,18 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 from redomino.advancedkeyword.config import KEYWORD_SEPARATOR
 from redomino.advancedkeyword.browser.keywordmapcontrolpanel import IKeywordMapSchema
 
+def cutKeywords(kw):
+    """if prefix = redomino.test1.test2 it yields
+       - redomino
+       - redomino.test1
+       - redomino.test1.test2"""
+    l = kw.split(KEYWORD_SEPARATOR)
+    out = []
+    for k in l:
+        out.append(k)
+        yield '.'.join(out)
+
+
 class KWGenerator(BrowserView):
     """Keyword tree generator baseclass"""
 
@@ -49,7 +61,10 @@ class KWGenerator(BrowserView):
 
     def _is_selected(self,prefix):
         for kw in self.get_selected_kw():
-            if kw.startswith(prefix): return True
+            for k in cutKeywords(kw):
+                if k == prefix:
+                    return True
+
         return False
 
     @memoize

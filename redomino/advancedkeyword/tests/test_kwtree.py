@@ -275,7 +275,44 @@ class TestTreeKeywords(TestCase):
         self.assertEquals(data[1]['children'][0]['children'][0]['selected'], False)
         self.assertEquals(data[1]['children'][0]['children'][0]['children'], [])
 
+    def test_keywords6(self):
+        """ 
+            Subjects:
 
+            * redomino
+            * redomino.test
+            * redomino.test test2
+
+            selected:
+            
+            * redomino.test
+
+            Output:
+
+            * redomino
+            * redomino.test
+        """
+
+        l = ['redomino', 'redomino.test', 'redomino.test test2']
+        l2 = ['redomino.test', ]
+        
+        data = self._getTreeBrowserView(l, l2)()
+        self.assertEquals(len(data), 1)
+        self.assertTrue(data[0]['is_folder'])
+        self.assertEquals(data[0]['full_keyword'], 'redomino')
+        self.assertEquals(data[0]['keyword'], 'redomino')
+        self.assertEquals(data[0]['selected'], True)
+        self.assertEquals(len(data[0]['children']), 2)
+
+        self.assertFalse(data[0]['children'][0]['is_folder'])
+        self.assertEquals(data[0]['children'][0]['full_keyword'], 'redomino.test')
+        self.assertEquals(data[0]['children'][0]['keyword'], 'test')
+        self.assertEquals(data[0]['children'][0]['selected'], True)
+
+        self.assertFalse(data[0]['children'][1]['is_folder'])
+        self.assertEquals(data[0]['children'][1]['full_keyword'], 'redomino.test test2')
+        self.assertEquals(data[0]['children'][1]['keyword'], 'test test2')
+        self.assertEquals(data[0]['children'][1]['selected'], False)
 
 def test_suite():
     from unittest import TestSuite, makeSuite

@@ -1,12 +1,12 @@
 redomino.advancedkeyword
 ========================
 
-The ``redomino.advancedkeyword`` plugin aims to improve the keyword mechanism provided by Plone introducing *hierarchy* among keywords.
+The ``redomino.advancedkeyword`` plugin aims to improve the keyword mechanism provided by Plone introducing *hierarchy* among keywords adding taxonomies support.
 All the customizations introduced by redomino.advancedkeyword are made with backward compatibility in mind.
 You can also use this plugin without pain when you need to migrate your contents: redomino.advancedkeyword still uses the standard ``subject`` field and the main work was made at frontend level
 using javascript.
 
-Note: having your javascript enabled is not required to use redomino.advancedkeyword.
+Note: having your javascript enabled is not required to use redomino.advancedkeyword (but is recommended).
 
 What are the main problems of the old keyword management?
 ---------------------------------------------------------
