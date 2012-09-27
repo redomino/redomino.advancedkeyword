@@ -1,0 +1,23 @@
+language: python
+python:
+  - 2.5
+  - 2.6
+  - 2.7
+before_install:
+  - sudo apt-get install git
+# In the line above, really only git-svn is needed as the rest
+# is automatically installed. But then again, git-svn used to be
+# installed by default, too.
+#notifications:
+#  irc:
+#    channels: "irc.freenode.org#something"
+#    on_success: change
+#env: HGUSER=temp
+install:
+  - python bootstrap.py
+  - bin/buildout
+  - git config --global user.name "Temp user"
+  - git config --global user.email "temp@example.com"
+#  - bzr whoami "Temp user <temp@example.com>"
+script:
+  - bin/test
