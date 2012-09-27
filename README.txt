@@ -145,6 +145,11 @@ Type the following command:
 
 $ ./bin/test -m redomino.advancedkeyword
 
+Travis continous integration status (development version):
+
+.. image:: https://secure.travis-ci.org/redomino/redomino.advancedkeyword.png
+    :target: http://travis-ci.org/redomino/redomino.advancedkeyword
+
 Authors
 =======
 
