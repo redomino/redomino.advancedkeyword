@@ -3,7 +3,7 @@ import os
 
 version = '1.4.dev0'
 
-tests_require = []
+tests_require = ['Products.PloneTestCase']
 
 setup(name='redomino.advancedkeyword',
       version=version,
