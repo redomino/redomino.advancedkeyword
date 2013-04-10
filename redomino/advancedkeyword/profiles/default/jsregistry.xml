@@ -10,6 +10,10 @@
     cookable="True" enabled="on" expression="" insert-after="*"
     id="++resource++redomino.advancedkeyword.resources/jquery.keywordtree.js" inline="False"/>
 
+ <javascript cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression="" insert-after="*"
+    id="++resource++redomino.advancedkeyword.resources/jquery.shiftcheckbox.js" inline="False"/>
+
  <javascript cacheable="True" compression="safe" conditionalcomment="" insert-after="*"
     cookable="True" enabled="on" expression="python:here.restrictedTraverse('@@plone_context_info').view_url() == 'edit'"
     id="++resource++redomino.advancedkeyword.resources/subjectkeywordtree.js" inline="False"/>

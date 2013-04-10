@@ -11,6 +11,7 @@
  <!-- Your project file goes here -->
  <link rel="stylesheet" href="../jquery.keywordtree.css" type="text/css" media="screen">
  <script type="text/javascript" src="../jquery.keywordtree.js"></script>
+ <script type="text/javascript" src="../jquery.shiftcheckbox.js"></script>
  <!-- Your tests file goes here -->
  <script type="text/javascript" src="test.js"></script>
 </head>
@@ -23,6 +24,7 @@
 
     <div>
     <!-- Your can place here some markup to be tested -->
+    <h1>Test checkboxes selection</h1>
                                 
     <ul class="tree">
         <li>
@@ -60,9 +62,72 @@
             </ul>
         </li>
     </ul>
-    <select class="select" multiple="multiple"/>
-<div id="container" />
+    <select class="select" multiple="multiple"></select>
+
+    <div id="testmultiplecheck">
+        <h1>testing shift key</h1>
+        <ul class="tree2">
+            <li>
+                <input type="checkbox" id="A" value="A">
+                <label for="gastronomia">A</label>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="A-A" value="A.A">
+                        <label for="A-A">A</label>
+                        <ul>
+                            <li>
+                                <input type="checkbox" id="A-A-A" value="A.A.A">
+                                <label for="A-A-A">A</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="A-A-B" value="A.A.B">
+                                <label for="A-A-B">B</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="A-A-C" value="A.A.C">
+                                <label for="A-A-C">C</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="A-A-D" value="A.A.D">
+                                <label for="A-A-D">D</label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="A-B" value="A.B">
+                        <label for="A-B">B</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="A-C" value="A.C">
+                        <label for="A-C">C</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="A-D" value="A.D">
+                        <label for="A-D">D</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="A-E" value="A.E">
+                        <label for="A-E">E</label>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <input type="checkbox" id="B" value="B">
+                <label for="B">B</label>
+                <ul>
+                    <li>
+                        <input type="checkbox" id="B-A" value="B.A">
+                        <label for="B.A">A</label>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <select class="select2" multiple="multiple"></select>
+
     </div>
+    <div id="container" ></div>
+
+</div>
 </body>
 </html>
 

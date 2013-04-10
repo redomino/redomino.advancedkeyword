@@ -1,6 +1,18 @@
 $(document).ready(function (){
+
+
     $('.tree').keywordtree('.select');
     $('.tree').collapsedtree();
+
+    $('.tree2').keywordtree('.select2');
+    $('.tree2').collapsedtree();
+
+    $('ul.tree2, .tree2 ul').each(function (){
+        $(this).children().children(':checkbox').shiftcheckbox();
+    });
+
+    //$('.tree2 :checkbox').shiftcheckbox();
+
     function reset(){
         $('.tree :checked').removeAttr('checked');
     };
