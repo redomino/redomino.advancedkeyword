@@ -123,3 +123,8 @@ msgstr "Nessuna modifica è stata effettuata"
 msgid "title_keywordsmap"
 msgstr "Mappa delle categorie"
 
+
+#. Default: "Return items matching some or all of these tags."
+#: ./skins/advancedkeyword/search_form.pt:72
+msgid "help_search_tags"
+msgstr "Restituisce gli elementi che corrispondono ad alcune od a tutte le categorie."

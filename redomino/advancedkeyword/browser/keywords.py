@@ -93,7 +93,7 @@ class KeywordsMapGenerator(KWGenerator):
     """Keyword tree generator for Keyword Map
 
        - all the subjects
-       - It doesn't matter which keyword is selected
+       - I get subjects from the request (sometimes it doesn't matter)
     """
 
     def get_all_kw(self):
@@ -101,8 +101,9 @@ class KeywordsMapGenerator(KWGenerator):
         return catalog.uniqueValuesFor('Subject')
 
 
+    @memoize
     def get_selected_kw(self):
-        return []
+        return self.request.form.get('Subject', [])
 
 class KeywordsWidgetGenerator(KWGenerator):
     """Keyword tree generator for Keyword widget
@@ -118,6 +119,7 @@ class KeywordsWidgetGenerator(KWGenerator):
     @memoize
     def get_selected_kw(self):
         return self.context.Subject()
+
 
 
 class KeywordsMap(BrowserView):
