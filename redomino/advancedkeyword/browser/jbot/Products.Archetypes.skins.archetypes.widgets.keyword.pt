@@ -29,7 +29,10 @@
                         allowedKeywords python: context.collectKeywords(fieldName, field.accessor, widget.vocab_source);
                         site_props context/portal_properties/site_properties|nothing;
                         format widget/format | string:select;
-                        allowRolesToAddKeywords site_props/allowRolesToAddKeywords|nothing;">
+                        allowRolesToAddKeywords site_props/allowRolesToAddKeywords|nothing;
+                        keywordswidgetgenerator nocall: context/keywordswidgetgenerator;
+                        allowedKeywordsSet python: keywordswidgetgenerator.unicodeset(allowedKeywords);
+                        valueset python: keywordswidgetgenerator.unicodeset(value)">
             
                     <div tal:condition="allowedKeywords" id="advancedExistingTagsSection">
 
@@ -37,18 +40,10 @@
                             dl semantically associates selector name with values
                         </tal:comment>
                         <dl id="existingTags">
-                            <div class="subjectTree" tal:define="tree context/keywordswidgetgenerator">
+                            <div class="subjectTree" tal:define="tree keywordswidgetgenerator">
                                 <metal:use-macro use-macro="context/@@keywordsmacros/keywordswidgetmacro"/>
                             </div>
 
-
-
-<!--                            <label for="subject">-->
-<!--                                <dt id="existingTagsTitle">-->
-<!--                                    <span i18n:translate="label_select_existing_tags">-->
-<!--                                        Select from existing tags. -->
-<!--                                    </span>-->
-<!--                                </dt>-->
 
                                 <tal:comment tal:replace="nothing">
                                     Type-to-skip functionality with javascript enabled 
@@ -62,7 +57,7 @@
                                     but I think this would be confusing to the majority of users.
 									The decision at this point is to not try to explain any of this on the page.
                                 </tal:comment>
-<!--                            </label>-->
+
                             <div class="visualClear"><!-- --></div>
                             <select id="predefined_subjects"
                                 name="predefined_subjects:list"
@@ -73,7 +68,7 @@
                                                 name string:${fieldName}_existing_keywords:list;">
                                 <option value="#" tal:repeat="keyword allowedKeywords"
                                     tal:content="keyword" tal:attributes="value keyword;
-                                    selected python:test(context.unicodeTestIn(keyword, value), 'selected', None)">
+                                    selected python: keyword in valueset and 'selected' or ''">
                                     An existing tag
                                 </option>
                             </select>
@@ -109,7 +104,7 @@
                                             type string:checkbox;
                                             name string:${fieldName}_existing_keywords:list;
                                             id string:${fieldName}_${repeat/keyword/number};
-                                            checked python:test(context.unicodeTestIn(keyword, value), 'checked', None);
+                                            checked python: keyword in valueset and 'checked' or '';
                                             value keyword" />
                                     <label 
                                         tal:content="keyword"
@@ -145,7 +140,7 @@
                                     rows="4"
                                     tal:attributes="id string:${fieldName}_keywords;
                                                     name string:${fieldName}_keywords:lines;"
-                                    tal:define="subject python:[item for item in value if not context.unicodeTestIn(item,allowedKeywords)]"
+                                    tal:define="subject python:[item for item in value if not item in allowedKeywordsSet]"
                                     tal:content="python:'\n'.join(subject)">
                                     A new tag
                                 </textarea>

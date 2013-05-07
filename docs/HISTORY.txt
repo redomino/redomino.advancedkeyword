@@ -8,6 +8,7 @@ Changelog
   [davidemoro]
 - now you can select more than a keyword using the shift key [sithmel]
 - added advanced search form customization [sithmel]
+- fixed performance issue on editing widget [sithmel]
 
 
 1.3 (2012-08-06)

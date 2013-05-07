@@ -120,6 +120,9 @@ class KeywordsWidgetGenerator(KWGenerator):
     def get_selected_kw(self):
         return self.context.Subject()
 
+    def unicodeset(self, values):
+        unicodeEncode = self.context.unicodeEncode
+        return set([unicodeEncode(v) for v in values])
 
 
 class KeywordsMap(BrowserView):

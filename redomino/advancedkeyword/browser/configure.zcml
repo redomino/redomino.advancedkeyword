@@ -43,6 +43,7 @@
       name="keywordswidgetgenerator"
       class=".keywords.KeywordsWidgetGenerator"
       permission="zope2.View"
+      allowed_attributes="unicodeset"
       />
 
   <!-- Views macros -->
