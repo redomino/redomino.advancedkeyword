@@ -4,7 +4,9 @@ Changelog
 1.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- in editing: when a user doesn't have the permission to add keywords the
+  widget is still present though hidden. And the keyword filtered by collectKeyword
+  are preserved [sithmel]
 
 
 1.4 (2013-05-08)

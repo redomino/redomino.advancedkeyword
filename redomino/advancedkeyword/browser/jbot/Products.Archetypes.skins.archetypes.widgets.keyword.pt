@@ -121,8 +121,11 @@
                         <div class="visualClear"><!-- --></div>
                     </div>
                     
-                    <tal:condition condition="python:not widget.roleBasedAdd or (allowRolesToAddKeywords and [role for role in user.getRolesInContext(context) if role in allowRolesToAddKeywords])">
-                        <dl id="advancedNewTagsSection">
+                    <tal:condition define="show_new_kw python:not widget.roleBasedAdd or (allowRolesToAddKeywords and [role for role in user.getRolesInContext(context) if role in allowRolesToAddKeywords])">
+                        <dl id="advancedNewTagsSection" tal:attributes="style python:show_new_kw and ' ' or 'display: none;;'">
+                    
+<!--                    <tal:condition condition="python:not widget.roleBasedAdd or (allowRolesToAddKeywords and [role for role in user.getRolesInContext(context) if role in allowRolesToAddKeywords])">-->
+<!--                        <dl id="advancedNewTagsSection">-->
                             <label for="subject_keywords">
                                 <dt id="advancedNewTagsTitle">
                                     <span i18n:translate="label_create_new_tags">
